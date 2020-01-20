@@ -1,9 +1,20 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const routes = require('./routes');
 
 const app = express();
 
-app.use(express.json());
+mongoose.connect('mongodb+srv://<username>:<password>@cluster0-cp0ni.mongodb.net/test?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
+app.use(express.json()); //Precisa vir antes das rotas
+app.use(routes);
+
+app.listen(3333);
+
+/*
 // Métodos http:  GET, POST, PUT, DELETE
 
 // Tipos de Parâmetros
@@ -11,30 +22,33 @@ app.use(express.json());
 // Route Params: request.params (identificar um recurso na alteraçõa ou remoção)
 // Body: request.body (Dados para criação ou alteração de um registro)
 
-app.get('/', (request, response) => {
+//MongoDB
+
+ app.get('/', (request, response) => {
     return response.json(
         {
             message: 'response the server!'
         }
     );
-});
+}); 
 
-app.get('/users', (request, response) => {
+ app.get('/users', (request, response) => {
     console.log(request.query);
     return response.json(
         {
             message: 'response the server!'
         }
     );
-});
+}); 
 
-app.post('/users', (request, response) => {
+ app.post('/users', (request, response) => {
     console.log(request.body);
     return response.json(
         {
             message: 'response the server!'
         }
     );
-});
+}); 
 
-app.listen(3333);
+*/
+
