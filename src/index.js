@@ -4,7 +4,7 @@ const routes = require('./routes');
 
 const app = express();
 
-mongoose.connect('urlDatabase', {
+mongoose.connect('UrlDatabase', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

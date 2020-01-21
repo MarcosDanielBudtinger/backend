@@ -38,5 +38,11 @@ module.exports = {
         }
     
         return response.json(dev);
-    }
+    },
+
+    async destroy(request, response){
+        const { github_username } = request.params;
+        dev = await Dev.deleteOne({github_username});
+        return response.json({message: 'Excluindo ' + dev});
+    },
 };
